@@ -1,0 +1,48 @@
+// Write your custom css/scss here
+.form-control.ng-touched.ng-invalid {
+    border: 1.5px solid #dc3545;
+}
+.invalid-input-message {
+    color: #dc3545;
+}
+
+.ng-select.ng-invalid.ng-touched {
+    border: 1.5px solid #dc3545;
+    border-radius: 0.25rem;
+}
+.form-group {
+  margin: 5px 0px;
+}
+.dropdown-icon{
+  &::after{
+    content: '\e979' !important;
+    font-size: 20px !important;
+  }
+}
+
+.loadPolicy {
+  width: 50%;
+  &.center{
+    transform: translateY(25%);
+  }
+}
+@media screen and (max-width:750px) {
+  .loadPolicy {
+    width: 100%;
+    &.center{
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%,75%);
+    }
+  }
+
+}
+app-sidebar-menu{
+  a {
+    color: #000 !important;
+  }
+}
+
+text {
+  fill: #000 !important;
+}

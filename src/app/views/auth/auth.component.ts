@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from '@environment';
+import LST from '@shared/utils/local-storage';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly _router: Router) { }
 
   ngOnInit(): void {
+    const token = LST.get<{token:string}>(environment.tokenKey,{token:''});
+    if(token) this._router.navigateByUrl('app');
   }
 
 }

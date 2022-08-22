@@ -26,6 +26,7 @@ export class LoginService {
       return true;
     } catch (error:any) {
       if(error.status==401 || error.status==400) return this._messageService.alertMessage('Leal Coins', 'Oops! parece que tus credenciales son incorrectas vuelve a intentarlo', 'error');
+      console.log(error);
       this._messageService.alertMessage('Leal Coins', 'Oops! algo salio mal vuelve a intentarlo', 'error');
       return false;
     }

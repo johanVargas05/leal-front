@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   validReadme() {
-    const {email} = LST.get<{email:string}>(environment.readme);
+    const {email} = LST.get<{email:string}>(environment.readme, {email:''});
     let recordarme = false;
     (email)?recordarme=true:recordarme = false;
 

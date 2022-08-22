@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ViewsModule } from '@views/views.module';
@@ -10,6 +10,7 @@ import { MomentModule } from 'ngx-moment';
 import { AppComponent } from './app.component';
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { InterceptorHttpService } from '@shared/servers/interceptor-http/interceptor-http.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,11 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
           scss: () => import('highlight.js/lib/languages/scss')
         }
       }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorHttpService,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

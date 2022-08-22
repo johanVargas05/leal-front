@@ -1,0 +1,3 @@
+<div class="mt-1" *ngFor="let error of options.errors">
+    <p class="text-danger" *ngIf="FormGroupControl.get(options.control)?.getError(error.type) && FormGroupControl.get(options.control)?.touched">{{ error.message }}</p>
+</div>

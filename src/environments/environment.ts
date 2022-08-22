@@ -4,6 +4,9 @@
 
 export const environment = {
   production: false,
+  urlServer: 'http://localhost:3000/api/v1/',
+  tokenKey: 'tokenLeal',
+  userData: 'lealData'
 };
 
 /*

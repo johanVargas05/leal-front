@@ -16,6 +16,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 import { ContentAnimateDirective } from '@core/content-animate/content-animate.directive';
+import { ErrorInputComponent } from './components/error-input/error-input.component';
+import { PasswordValidatorComponent } from './components/password-validator/password-validator.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -24,6 +26,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
   declarations: [
     ContentAnimateDirective,
+    ErrorInputComponent,
+    PasswordValidatorComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +53,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     FeahterIconModule,
     SweetAlert2Module,
-    ContentAnimateDirective
+    ContentAnimateDirective,
+    ErrorInputComponent,
+    PasswordValidatorComponent
   ],
   providers: [
     {

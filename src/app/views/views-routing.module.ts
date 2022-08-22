@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'app',
     loadChildren: () => import('@views/app/app.module').then((m) => m.AppModule)
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('@views/auth/auth.module').then((m) => m.AuthModule)
+  },
 
 ];
 

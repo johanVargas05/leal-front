@@ -1,0 +1,39 @@
+<article class="card animate__animated animate__fadeInLeft animate__slow">
+  <section class="row">
+    <section class="col-md-5 pe-md-0">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <img src="/assets/images/others/register.png" alt="Register" class="d-none d-md-block w-100 h-auto"/>
+      </div>
+    </section>
+    <section class="col-md-7 ps-md-0">
+      <section class="px-4 py-5">
+        <p class="d-block text-center display-5 text-primary">LEAL<span class="text-dark">COINS</span></p>
+        <h5 class="text-muted fw-normal mb-4 text-center">¡Bienvenido al registro! Estas a un solo paso.</h5>
+        <form class="forms-sample" autocomplete="off" [formGroup]="formRegister">
+
+          <div class="form-group">
+            <label class="control-label">Nombre completo</label>
+            <input type="text" class="form-control" formControlName="fullName">
+            <app-error-input [FormGroupControl]="formRegister" [options]="{control:'fullName', errors:[{type:'required', message:'Este campo es requerido.'}]}"></app-error-input>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label">Correo electrónico</label>
+            <input type="email" class="form-control" formControlName="email">
+            <app-error-input [FormGroupControl]="formRegister" [options]="{control:'email', errors:[{type:'required', message:'Este campo es requerido.'}, {type:'pattern', message:'El correo ingresado no es valido'}]}"></app-error-input>
+          </div>
+
+          <app-password-validator
+          [resetPassForm]="formRegister"
+          [processStatus]="processStatus"
+          [colOption]="true"
+          textButton="Registrarme"
+          (Submit)="registerUser()"></app-password-validator>
+
+
+          <button type="button" routerLink="../login" class="btn btn-outline-secondary btn-icon-text mb-2 mb-md-0">Iniciar sesión</button>
+        </form>
+      </section>
+    </section>
+  </section>
+</article>

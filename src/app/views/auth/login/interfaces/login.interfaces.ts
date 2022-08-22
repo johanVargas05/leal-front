@@ -1,21 +1,19 @@
-export interface RegisterData {
-  fullName: string;
+export interface LoginData {
   email: string;
   password: string;
 }
 
-
-export interface RegisterResponse {
+export interface LoginResponse {
   token: string;
   user:  User;
  }
 
-interface User {
+ export interface User {
   _id:      string;
   email:    string;
   fullName: string;
   isActive: boolean;
-  password: null;
-  points?:   number;
+  password: string;
   roles:    string[];
  }
+

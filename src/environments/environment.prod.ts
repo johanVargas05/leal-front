@@ -1,4 +1,7 @@
 export const environment = {
   production: true,
-  urlServer:''
+  urlServer:'',
+  tokenKey: 'tokenLeal',
+  userData: 'lealData',
+  readme: 'email-readme'
 };

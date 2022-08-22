@@ -1,0 +1,42 @@
+<article class="card animate__animated animate__fadeInLeft animate__slow">
+  <section class="row">
+    <section class="col-md-5 pe-md-0">
+      <div class="d-flex justify-content-center align-items-center h-100 bg-opacity-25 bg-primary">
+        <img src="/assets/images/others/login.png" alt="Register" class="d-none d-md-block w-100 h-auto"/>
+      </div>
+    </section>
+    <section class="col-md-7 ps-md-0">
+      <section class="px-4 py-5">
+        <p class="d-block text-center display-5 text-primary">LEAL<span class="text-dark">COINS</span></p>
+        <h5 class="text-muted fw-normal mb-4 text-center">¡Bienvenido de nuevo! Ingresa a tu cuenta.</h5>
+        <form class="forms-sample" autocomplete="off" [formGroup]="formLogin" (submit)="login()">
+
+          <div class="form-group">
+            <label class="control-label">Correo electrónico</label>
+            <input type="email" class="form-control" formControlName="email">
+            <app-error-input [FormGroupControl]="formLogin" [options]="{control:'email', errors:[{type:'required', message:'Este campo es requerido.'}, {type:'pattern', message:'El correo ingresado no es valido'}, {type:'error_credentials', message:'Tu correo puede ser invalido'}]}"></app-error-input>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label">Contraseña</label>
+            <input type="password" class="form-control" formControlName="password">
+            <app-error-input [FormGroupControl]="formLogin" [options]="{control:'password', errors:[{type:'required', message:'Este campo es requerido.'}, {type:'error_credentials', message:'Tu Contraseña puede ser invalida'}]}"></app-error-input>
+          </div>
+
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="recordarme" formControlName="recordarme"/>
+            <label class="form-check-label" for="recordarme"> Recordarme </label>
+          </div>
+
+
+          <button type="submit" class="btn btn-primary me-2 mb-2 float-start" [disabled]="formLogin.invalid || processStatus">
+            <span *ngIf="!processStatus">Iniciar sesión</span>
+            <span class="spinner-border spinner-border-sm ml-2" role="status" aria-hidden="true" *ngIf="processStatus"></span>
+            <span *ngIf="processStatus">Processing...</span>
+          </button>
+          <button type="button" routerLink="../register" class="btn btn-outline-secondary btn-icon-text mb-2 mb-md-0">Registrarse</button>
+        </form>
+      </section>
+    </section>
+  </section>
+</article>

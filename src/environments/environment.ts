@@ -7,7 +7,8 @@ export const environment = {
   urlServer: 'http://localhost:3000/api/v1/',
   tokenKey: 'tokenLeal',
   userData: 'lealData',
-  readme: 'email-readme'
+  readme: 'email-readme',
+  valuePoint: 100
 };
 
 /*

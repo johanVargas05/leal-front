@@ -1,0 +1,15 @@
+<article class="card card-product">
+ <div class="card-header" [style]="'background-image:url('+data.images[0]+');'">
+   <span class="badge rounded-pill bg-secondary float-start"> {{data.category}}</span>
+   <span class="badge rounded-pill bg-primary float-end"> {{data.discountPercentage}}%</span>
+ </div>
+  <div class="card-body">
+    <h3 class="h6 text-center text-primary">{{data.brand | titlecase}}</h3>
+    <h2 class="h4 text-center">{{data.title}}</h2>
+    <div class="d-grid gap-2 mt-3">
+      <button class="btn btn-primary fw-bold icon-leal-black">Ganar coins </button>
+      <button class="btn btn-outline-secondary fw-bold icon-leal">Redimir <span class="">{{point}}</span></button>
+    </div>
+  </div>
+
+</article>

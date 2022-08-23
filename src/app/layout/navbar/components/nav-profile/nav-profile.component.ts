@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '@environment';
 
 @Component({
   selector: 'app-nav-profile',
@@ -9,7 +10,7 @@ export class NavProfileComponent implements OnInit {
   infoUser={
     name:'',
     email: '',
-    imgProfile:'https://via.placeholder.com/80x80'
+    imgProfile:'assets/images/profiles/perfil.png'
   }
   constructor() { }
 

@@ -1,0 +1,35 @@
+<section class="row mt-5">
+  <div class="col-md-12 bg-category">
+    <h3 class="text-dark fw-bold ">Usa tus Leal Coins en <small class="float-end text-danger cursor-pointer" *ngIf="filter" routerLink="./">Eliminar filtro </small></h3>
+    <h5 class="text-dark fw-light">Utiliza tus Leal Coins como efectivo en todas tus marcas favoritas Leal</h5>
+    <hr>
+    <owl-carousel-o [options]="CategoryCarousel">
+      <ng-template carouselSlide *ngFor="let category of categories">
+        <article class="card bg-primary cursor-pointer" routerLink="./" [queryParams]="{category:category.value}">
+          <div class="card-body">
+            <img [src]="category.icon" alt="" class="d-block ">
+            <h5 class="text-center fw-bold">{{category.title}}</h5>
+          </div>
+        </article>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</section>
+
+
+<section class="row">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2" *ngFor="let product of products">
+    <app-product class="m-4" [data]="product"></app-product>
+  </div>
+  <div class="d-grid gap-2">
+    <div class="d-flex justify-content-center align-items-center" *ngIf="cargandoData">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span class=" ms-3"> Cargando más productos ....</span>
+    </div>
+    <button type="button" class="btn btn-secondary" (click)="verMas()" *ngIf="showVerMas">Ver más</button>
+  </div>
+</section>
+
+

@@ -1,0 +1,13 @@
+<section class="row mb-3">
+  <div class="col-m-12 card">
+    <div class="card-body">
+      <h1 class="text-primary">{{activeTitle | titlecase}}</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-line">
+          <li class="breadcrumb-item"><a routerLink="./home" *ngIf="activeTitle!=='inicio'">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{activeTitle | titlecase}}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>

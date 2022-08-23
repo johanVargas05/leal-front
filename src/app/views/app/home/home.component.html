@@ -1,0 +1,30 @@
+<section class="row">
+  <div class="col-md-12 card">
+    <div class="card-body">
+      <section class="row justify-content-md-center">
+        <div class="col-md-8">
+
+        </div>
+      </section>
+      <section class="row justify-content-md-center">
+        <div class="col-md-8">
+          <owl-carousel-o [options]="bannerPublicidad">
+            <ng-template carouselSlide *ngFor="let slide of slidesStore" [id]="slide.id" class="position-relative">
+              <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title">
+              <h1 class="title-banner">{{slide.title}}</h1>
+              <h5 class="subtitle-banner">{{slide.subtitle}}</h5>
+              <a class="btn btn-secondary btn-banner btn-lg" [href]="slide.url">{{slide.btnText | titlecase}}</a>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+      </section>
+      <section class="row">
+        <div class="col-md-12">
+          <app-list-product></app-list-product>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+

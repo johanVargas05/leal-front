@@ -9,12 +9,14 @@ import { NavbarModule } from '@layout/navbar/navbar.module';
 
 
 import { SharedModule } from '@shared/shared.module';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
     BaseComponent,
     FooterComponent,
     SidebarComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     CommonModule,

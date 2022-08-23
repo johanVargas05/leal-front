@@ -8,9 +8,19 @@ import { AuthGuard } from '@shared/guards/auth.guard';
 const routes: Routes = [
   {
       path: '', component: BaseComponent,
-      children: [],
-      data:{name:"Home",validRole:false},
-      canActivate:[AuthGuard]
+      children: [
+        { path: '', pathMatch: 'full', redirectTo: 'inicio' },
+        { path: 'inicio',
+          loadChildren: () => import('@views/app/home/home.module').then((m) => m.HomeModule),
+          data:{name:"Inicio",validRole:false},
+          canActivate: [AuthGuard]
+        },
+        { path: 'billetera',
+          loadChildren: () => import('@views/app/home/home.module').then((m) => m.HomeModule),
+          data:{name:"Home",validRole:false},
+          canActivate: [AuthGuard]
+        },
+      ],
   }
 ];
 

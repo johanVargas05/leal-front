@@ -15,8 +15,6 @@ export class InterceptorHttpService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const token = LST.get<{token:string}>(environment.tokenKey,{token:''});
-console.log(token);
-
 
     let request = req;
 

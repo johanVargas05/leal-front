@@ -1,0 +1,38 @@
+.title-banner {
+    max-width: 400px;
+    left: 4vw;
+    top: 25%;
+    font-size: 35px !important;
+    position: absolute;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subtitle-banner {
+  max-width: 600px;
+    left: 4vw;
+    bottom: 25%;
+    font-size: 20px !important;
+    position: absolute;
+    font-weight:100;
+    text-align: center;
+}
+
+.btn-banner {
+  position: absolute;
+  left: 4vw;
+  bottom:15%;
+}
+
+
+@media screen and (max-width: 768px) {
+  .title-banner {
+    max-width: 300px;
+
+}
+  .subtitle-banner {
+    max-width: 300px;
+  }
+
+}
+

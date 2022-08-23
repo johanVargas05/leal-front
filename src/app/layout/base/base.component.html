@@ -13,11 +13,12 @@
     <div class="page-content">
 
       <!-- Spinner for lazyload modules -->
-      <div *ngIf="isLoading" class="spinner-wrapper">
-        <div class="spinner">Loading...</div>
+      <div *ngIf="isLoading" class="spinner-wrapper full-screen">
+        <img src="assets/images/leal-logo.gif" alt="" srcset="">
       </div>
 
       <div contentAnimate *ngIf="!isLoading">
+        <app-breadcrumb></app-breadcrumb>
         <router-outlet></router-outlet>
       </div>
 

@@ -22,7 +22,7 @@ export class RegisterService {
     }));
     try {
       const { user, token } = await lastValueFrom($observable);
-      LST.set(environment.userData,user);
+      LST.set(environment.userData,{id:user._id});
       LST.set(environment.tokenKey,token);
       this._messageService.alertMessage('Leal Coins', 'Felicitaciones ya puedes disfrutar de la experiencia LEAL', 'success');
       this._router.navigateByUrl('app');

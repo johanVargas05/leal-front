@@ -1,0 +1,91 @@
+@import './variables';
+// Write your custom css/scss here
+.form-control.ng-touched.ng-invalid {
+    border: 1.5px solid $danger;
+}
+.invalid-input-message {
+    color: $danger;
+}
+
+.ng-select.ng-invalid.ng-touched {
+    border: 1.5px solid $danger;
+    border-radius: 0.25rem;
+}
+.form-group {
+  margin: 5px 0px;
+}
+.dropdown-icon{
+  &::after{
+    content: '\e979' !important;
+    font-size: 20px !important;
+  }
+}
+
+.loadPolicy {
+  width: 50%;
+  &.center{
+    transform: translateY(25%);
+  }
+}
+@media screen and (max-width:750px) {
+  .loadPolicy {
+    width: 100%;
+    &.center{
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%,75%);
+    }
+  }
+
+}
+app-sidebar-menu{
+  a {
+    color: $white !important;
+  }
+}
+
+text {
+  fill: $white !important;
+}
+
+.owl-prev, .owl-next {
+ background-color: $secondary !important;
+}
+
+.icon-leal {
+  &::before {
+    content: url(../assets/icons/coins-icon.svg);
+    margin-right: 5px;
+    width: 16px;
+    position: relative;
+  }
+}
+.icon-leal-black {
+    &::before {
+      content: url(../assets/icons/coins-icon-black.svg);
+      margin-right: 5px;
+      width: 16px;
+      font-size: 10px;
+      position: relative;
+    }
+}
+
+
+
+.ng-select .ng-select-container {
+  cursor: default;
+  display: flex;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+[ngbDatepickerDayView] {
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 0.25rem;
+  background: transparent;
+}

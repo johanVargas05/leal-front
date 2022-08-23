@@ -6,13 +6,14 @@ import { environment } from '@environment';
 import { lastValueFrom } from 'rxjs';
 import { RefreshTokenResponse } from '../interfaces/auth.interfaces';
 import { ValidRoles } from '@shared/interfaces/valid-roles.interfaces';
+import { ModoDarkService } from '../../../shared/servers/modo-dark/modo-dark.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private readonly _http: HttpClient,private readonly _router: Router) { }
+  constructor(private readonly _http: HttpClient,private readonly _router: Router, private _modoDarkService:ModoDarkService) { }
 
   async refreshToken() {
     const $observable = this._http.get<RefreshTokenResponse>(`${environment.urlServer}auth/refresh-token`);
@@ -28,6 +29,7 @@ export class AuthService {
 
   signOut() {
     localStorage.clear();
+    this._modoDarkService.changeMode(false);
     this._router.navigateByUrl('auth/login');
   }
 

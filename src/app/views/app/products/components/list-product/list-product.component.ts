@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '@environment';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription } from 'rxjs';
 import { categories } from '../../data/categories.data';
@@ -85,6 +86,12 @@ export class ListProductComponent implements OnInit, OnDestroy{
     }
     (data.length<this.limit)?this.showVerMas = false:this.showVerMas = true;
     return data;
+  }
+
+  get themeDark() {
+    const theme = localStorage.getItem(environment.theme) as 'theme-dark' | 'theme-light' | null;
+    if(theme== 'theme-dark') return true;
+    return false;
   }
 
 

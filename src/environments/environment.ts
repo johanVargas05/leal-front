@@ -8,7 +8,8 @@ export const environment = {
   tokenKey: 'tokenLeal',
   userData: 'lealData',
   readme: 'email-readme',
-  valuePoint: 100
+  valuePoint: 100,
+  theme: 'theme-leal',
 };
 
 /*

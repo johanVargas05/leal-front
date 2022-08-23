@@ -1,0 +1,59 @@
+<section class="row">
+  <div class="col-md-12 card">
+    <div class="card-body">
+      <section class="row justify-content-md-center">
+        <div class="col-md-8">
+          <article class="card bg-dark">
+            <div class="card-body">
+              <h2 class="text-center text-light">Tu saldo en <img src="assets/images/logo.svg" alt=""> coins <span class="badge rounded-pill bg-primary">{{(data$ | async)?.points| currency : 'USD' : 'symbol' : '1.0-0'}}</span></h2>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="row">
+        <div class="col-md-12">
+          <section class="row mt-5">
+            <div class="col-md-12">
+              <!-- <small class="float-end text-danger cursor-pointer" *ngIf="filter" routerLink="./">Eliminar filtro </small> -->
+              <h3 class="fw-bold">Historial de movimientos </h3>
+              <h5 class="fw-light">Filtra tus movimientos por:</h5>
+              <hr>
+            </div>
+          </section>
+          <section class="row">
+            <div class="col-md-4" *ngFor="let filter of filters">
+              <article class="card bg-primary cursor-pointer my-2" routerLink="./" [queryParams]="{filter:filter.query}">
+                <div class="card-body">
+                  <h5 class="text-center text-dark fw-bold"><i class="mdi" [ngClass]="filter.icon"></i> {{filter.title}}</h5>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section class="row justify-content-center">
+            <div class="col-md-8">
+              <article class="card my-2" *ngFor="let item of history">
+                <div class="card-body">
+                  <h3>{{item.createAt | date:"d MMMM y"}}</h3>
+
+                  <h4 class="fw-light">{{item.description}}
+                    <span class="float-end fw-bold" [ngClass]="item.action=='deposit'?'text-success':'text-danger'">{{(item.action=='deposit')?'+':'-'}}{{item.points | currency : 'USD' : 'symbol' : '1.0-0'}}</span></h4>
+                </div>
+              </article>
+              <div class="d-grid gap-2">
+                <div class="d-flex justify-content-center align-items-center" *ngIf="loading">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <span class=" ms-3"> Cargando ....</span>
+                </div>
+                <button type="button" class="btn btn-secondary" (click)="verMas()" *ngIf="showVerMas">Ver más</button>
+              </div>
+            </div>
+          </section>
+
+
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

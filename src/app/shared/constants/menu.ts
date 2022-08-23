@@ -1,6 +1,5 @@
 import { environment } from "@environment";
 import { MenuItem } from "@shared/interfaces/menu.model";
-import { ValidRoles } from "@shared/interfaces/valid-roles.interfaces";
 
 
 
@@ -9,6 +8,15 @@ const MENU: MenuItem[] = [
     label: 'Inicio',
     icon: 'home',
     link: '/app/inicio'
+  },
+  {
+    label: 'Finanzas',
+    isTitle: true
+  },
+  {
+    label: 'Billetera',
+    icon: 'credit-card',
+    link: '/app/billetera'
   }
 ];
 

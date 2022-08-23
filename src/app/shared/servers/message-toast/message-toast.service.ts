@@ -21,6 +21,7 @@ export class MessageToastService {
     this.configMessage.text = message;
     this.configMessage.icon =icon;
     this.configMessage.timer =timer;
+    this.configMessage.position='bottom-end';
 
     Swal.fire(this.configMessage);
   }

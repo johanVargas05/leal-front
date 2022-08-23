@@ -14,7 +14,13 @@ const routes: Routes = [
           loadChildren: () => import('@views/app/home/home.module').then((m) => m.HomeModule),
           data:{name:"Inicio",validRole:false},
           canActivate: [AuthGuard]
-        }
+        },
+        { path: 'billetera',
+          loadChildren: () => import('@views/app/wallet/wallet.module').then((m) => m.WalletModule),
+          data:{name:"Billetera",validRole:false},
+          canActivate: [AuthGuard]
+        },
+
       ],
   }
 ];

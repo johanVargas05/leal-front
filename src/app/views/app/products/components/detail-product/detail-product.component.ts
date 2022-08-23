@@ -3,7 +3,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from '../../interfaces/products.interfaces';
 import { PointsService } from '../../services/points/points.service';
 import { PointsAction } from '../../interfaces/points.interfaces';
-import { MessageToastService } from '@shared/servers/message-toast/message-toast.service';
 import { environment } from '@environment';
 
 @Component({
@@ -34,7 +33,7 @@ export class DetailProductComponent implements OnInit {
   constructor(
     private _modalActive: NgbActiveModal,
     private _pointsService:PointsService,
-    private readonly _messageService: MessageToastService,) { }
+    ) { }
 
   ngOnInit(): void {
   }
@@ -50,15 +49,9 @@ export class DetailProductComponent implements OnInit {
       description,
       points
     };
-    try {
       await this._pointsService.crearDeposito(data);
       this.loading = false;
       this.close();
-      this._messageService.alertMessage('Leal Coins', `Felicitaciones acabas de ganar ${this.point} leal points!`, 'success');
-    } catch (error) {
-      this.loading = false;
-      this._messageService.alertMessage('Leal Coins', 'Oops! algo salio mal vuelve a intentarlo', 'error');
-    }
   }
 
   async redimirCoins() {
@@ -72,15 +65,9 @@ export class DetailProductComponent implements OnInit {
       description,
       points
     };
-    try {
       await this._pointsService.redimirPoints(data);
       this.loading = false;
       this.close();
-      this._messageService.alertMessage('Leal Coins', `Felicitaciones acabas de redimir ${this.point} leal points!`, 'success');
-    } catch (error) {
-      this.loading = false;
-      this._messageService.alertMessage('Leal Coins', 'Oops! algo salio mal vuelve a intentarlo', 'error');
-    }
   }
 
   close() {

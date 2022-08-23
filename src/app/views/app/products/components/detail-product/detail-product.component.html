@@ -1,0 +1,85 @@
+
+<div class="modal-header">
+  <h5 class="modal-title" *ngIf="action=='deposit'">Ganar coins - {{product.title}}</h5>
+  <h5 class="modal-title" *ngIf="action=='egress'">Redimir coins - {{product.title}}</h5>
+  <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="loading"></button>
+</div>
+<div class="modal-body">
+    <div class="row justify-content-center">
+      <div class="col-md-6 img-product" [style]="'background-image:url('+(product.images[0])+');'">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Descripción</h3>
+        <p>{{product.description}}</p>
+        <h5 class="my-2">Marca: <span class=" ms-1 badge rounded-pill bg-primary"> {{product.brand | titlecase}}</span></h5>
+        <h5 class="my-2">Categoría: <span class=" ms-1 badge rounded-pill bg-dark"> {{product.category | titlecase}}</span></h5>
+        <h5 class="my-2">Descuento: <span class=" ms-1 badge rounded-pill bg-primary"> {{product.discountPercentage}}%</span></h5>
+        <h5 class="my-2" *ngIf="action=='deposit'">Precio: <span class=" ms-1 badge rounded-pill bg-dark">{{product.price | currency : 'USD' : 'symbol' : '1.0-0'}}</span></h5>
+        <h5 class="my-2" *ngIf="action=='egress'">Coins a redimir: <span class=" ms-1 badge rounded-pill bg-dark icon-leal">{{point | currency : 'USD' : 'symbol' : '1.0-0'}}</span></h5>
+      </div>
+    </div>
+    <section class="row" *ngIf="loading">
+      <div class="col-12">
+        <div class="d-flex justify-content-center text-secondary">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <h4 class="text-center">{{(action=='deposit')?'Estamos procesando tu compra':'Estamos redimiendo tus coins'}}</h4>
+      </div>
+    </section>
+</div>
+
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="close()" [disabled]="loading">Close</button>
+  <button type="button" class="btn btn-primary btn-icon-text" [disabled]="loading" [swal]="ComprarProductoSwal" *ngIf="action=='deposit'">
+    <span *ngIf="loading">
+      <div class="d-flex align-items-center text-light">
+        <strong>Procesando...</strong>
+        <div class="spinner-grow ms-auto text-light" role="status" aria-hidden="true"></div>
+      </div>
+    </span>
+    <span *ngIf="!loading">
+      Comprar
+    </span>
+  </button>
+
+  <button type="button" class="btn btn-primary btn-icon-text" [disabled]="loading" [swal]="RedimirPointsSwal" *ngIf="action=='egress'">
+    <span *ngIf="loading">
+      <div class="d-flex align-items-center text-light">
+        <strong>Procesando...</strong>
+        <div class="spinner-grow ms-auto text-light" role="status" aria-hidden="true"></div>
+      </div>
+    </span>
+    <span *ngIf="!loading">
+      Redimir
+    </span>
+  </button>
+</div>
+
+
+
+<swal #RedimirPointsSwal
+title="Leal Coins"
+[text]="'Deseas redimir ' + (point |currency : 'USD' : 'symbol' : '1.0-0') + ' coins por el producto ' + product.title"
+icon="question"
+[showCancelButton]="true"
+[focusCancel]="true"
+confirmButtonText="Confirm"
+(confirm)="redimirCoins()">
+</swal>
+
+<swal #ComprarProductoSwal
+title="Leal Coins"
+[text]="'Deseas compar el producto ' + product.title+',' + ' ganaras ' + (point |currency : 'USD' : 'symbol' : '1.0-0') + ' leal coins'"
+icon="question"
+[showCancelButton]="true"
+[focusCancel]="true"
+confirmButtonText="Confirm"
+(confirm)="realizarDeposito()">
+</swal>
+
+

@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./points.component.scss']
 })
 export class PointsComponent implements OnInit {
-  data$:Observable<User>;
+  data$:Observable<{points:number}>;
   constructor(sharingService:SharingService ) {
-    this.data$ = sharingService.sharingDataUser;
+    this.data$ = sharingService.sharingPointsUser;
   }
 
 

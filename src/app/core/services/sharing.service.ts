@@ -16,6 +16,9 @@ export class SharingService {
     roles:[],
   });
 
+  private _sharingPoints: BehaviorSubject<{points:number}> =
+  new BehaviorSubject<{points:number}>({points:0});
+
   constructor() { }
 
   get sharingDataUser() {
@@ -25,4 +28,13 @@ export class SharingService {
   set sharingDataUserData(data:User) {
       this._sharingObservable.next(data);
   }
+
+  get sharingPointsUser() {
+    return this._sharingPoints.asObservable();
+  }
+
+  set sharingPointsUserData(data:{points:number}) {
+      this._sharingPoints.next(data);
+  }
+
 }

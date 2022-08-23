@@ -4,7 +4,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription } from 'rxjs';
 import { categories } from '../../data/categories.data';
 import { Product } from '../../interfaces/products.interfaces';
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from '../../services/products/products.service';
 
 @Component({
   selector: 'app-list-product',

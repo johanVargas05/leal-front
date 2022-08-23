@@ -17,6 +17,7 @@ export class UserDataService {
     const $observable = this._http.get<User>(`${environment.urlServer}users/${id}`);
      const user = await lastValueFrom($observable);
       this.sharingService.sharingDataUserData = user;
+      this.sharingService.sharingPointsUserData = {points:user.points};
       const data= JSON.stringify({id:user._id,roles:user.roles});
       localStorage.setItem(environment.userData,data);
 }

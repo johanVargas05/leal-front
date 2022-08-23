@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { environment } from '@environment';
+import { UserDataService } from '@shared/servers/user-data/user-data.service';
 
 @Component({
   selector: 'app-base',
@@ -10,9 +11,8 @@ import { environment } from '@environment';
 export class BaseComponent implements OnInit {
   isLoading: boolean;
   validationChangePassword=false;
-  constructor(private _router: Router) {
+  constructor( _router: Router,  _userDataService: UserDataService) {
 
-    // Spinner for lazyload modules
     _router.events.forEach((event) => {
       if (event instanceof RouteConfigLoadStart) {
         this.isLoading = true;
@@ -20,8 +20,7 @@ export class BaseComponent implements OnInit {
         this.isLoading = false;
       }
     });
-
-
+    _userDataService.getData();
   }
 
   ngOnInit(): void {

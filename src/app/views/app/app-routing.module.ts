@@ -14,12 +14,7 @@ const routes: Routes = [
           loadChildren: () => import('@views/app/home/home.module').then((m) => m.HomeModule),
           data:{name:"Inicio",validRole:false},
           canActivate: [AuthGuard]
-        },
-        { path: 'billetera',
-          loadChildren: () => import('@views/app/home/home.module').then((m) => m.HomeModule),
-          data:{name:"Home",validRole:false},
-          canActivate: [AuthGuard]
-        },
+        }
       ],
   }
 ];

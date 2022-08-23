@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, Router } from '@angular/router';
 
-import  LST  from '@shared/utils/local-storage';
+
 import { environment } from '@environment';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '@views/auth/services/auth.service';
-import { ValidRoles } from '../interfaces/valid-roles.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +20,8 @@ export class AuthGuard implements CanActivate {
     router: ActivatedRouteSnapshot):Promise<boolean>  {
 
       try {
-        const token = LST.get<{token:string}>(environment.tokenKey,{token:''});
-        const {roles} = LST.get<{roles:ValidRoles[]}>(environment.userData,{roles:[]});
-
+        const token = localStorage.getItem(environment.tokenKey);
+        const {roles} = JSON.parse(localStorage.getItem(environment.userData) ||'');
         if(!token) return false;
 
         this._title.setTitle(`Leal Coins | ${router.data.name}`);
@@ -33,7 +31,6 @@ export class AuthGuard implements CanActivate {
           this._router.navigateByUrl('errors/not-authorized');
           return false;
         };
-
 
         if(!await this._authService.refreshToken()){
           this._authService.signOut();

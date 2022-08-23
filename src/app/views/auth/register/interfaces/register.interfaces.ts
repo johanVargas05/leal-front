@@ -1,3 +1,5 @@
+import { User } from "@shared/interfaces/user.interfaces";
+
 export interface RegisterData {
   fullName: string;
   email: string;
@@ -10,12 +12,3 @@ export interface RegisterResponse {
   user:  User;
  }
 
-interface User {
-  _id:      string;
-  email:    string;
-  fullName: string;
-  isActive: boolean;
-  password: null;
-  points?:   number;
-  roles:    string[];
- }

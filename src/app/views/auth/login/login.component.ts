@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from '@environment';
 
-import  LST  from '@shared/utils/local-storage';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   async login() {
     const data =this.formLogin.value;
-    if(data.recordarme) LST.set(environment.readme,{email:data.email});
+    if(data.recordarme) localStorage.setItem(environment.readme, JSON.stringify(data.recordarme));
     delete  data.recordarme;
 
     const result = await this._loginService.login(data);
@@ -45,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   validReadme() {
-    const {email} = LST.get<{email:string}>(environment.readme, {email:''});
+    const {email} = JSON.parse(localStorage.getItem(environment.readme) || '');
     let recordarme = false;
     (email)?recordarme=true:recordarme = false;
 

@@ -7,6 +7,7 @@ import { NavProfileComponent } from './components/nav-profile/nav-profile.compon
 
 
 import { SharedModule } from '@shared/shared.module';
+import { PointsComponent } from './components/points/points.component';
 
 
 
@@ -15,6 +16,7 @@ import { SharedModule } from '@shared/shared.module';
     NavbarComponent,
     NavProfileComponent,
     SearchBarComponent,
+    PointsComponent,
   ],
   imports: [
     CommonModule,

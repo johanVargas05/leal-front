@@ -54,8 +54,8 @@ export class ListProductComponent implements OnInit, OnDestroy{
 
   cargandoData = false;
 
-  constructor(private readonly _activateRoute: ActivatedRoute, private readonly _productsService:ProductsService) {
-   this.$subscribe = this._activateRoute.queryParams.subscribe(async({category})=>{
+  constructor(_activateRoute: ActivatedRoute, private readonly _productsService:ProductsService) {
+   this.$subscribe = _activateRoute.queryParams.subscribe(async({category})=>{
       this.filter = category;
       this.offset = 1;
       this.products = await this.getData();

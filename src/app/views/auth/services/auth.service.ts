@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { environment } from '@environment';
-import  LST  from '@shared/utils/local-storage';
 import { lastValueFrom } from 'rxjs';
 import { RefreshTokenResponse } from '../interfaces/auth.interfaces';
 import { ValidRoles } from '@shared/interfaces/valid-roles.interfaces';
@@ -20,15 +19,15 @@ export class AuthService {
 
     try {
       const { token } = await lastValueFrom($observable);
-      LST.set(environment.tokenKey,token);
+      localStorage.setItem(environment.tokenKey,token);
       return true;
     } catch (error) {
       return false;
     }
   }
 
-  async signOut() {
-    LST.removeAll();
+  signOut() {
+    localStorage.clear();
     this._router.navigateByUrl('auth/login');
   }
 

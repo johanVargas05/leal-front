@@ -1,7 +1,7 @@
 import { environment } from "@environment";
 import { MenuItem } from "@shared/interfaces/menu.model";
 import { ValidRoles } from "@shared/interfaces/valid-roles.interfaces";
-import LST from '@shared/utils/local-storage';
+
 
 
 const MENU: MenuItem[] = [
@@ -14,7 +14,7 @@ const MENU: MenuItem[] = [
 
 export const menu =():MenuItem[]=>{
 
-  const {roles} = LST.get<{roles:ValidRoles[]}>(environment.userData,{roles:[]});
+  const {roles} = JSON.parse(localStorage.getItem(environment.userData) ||'') ;
 
  return MENU.filter(itemMenu=>{
     const permissions = itemMenu.permission;

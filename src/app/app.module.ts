@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { InterceptorHttpService } from '@shared/servers/interceptor-http/interceptor-http.service';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { InterceptorHttpService } from '@shared/servers/interceptor-http/interce
     HttpClientModule,
     ViewsModule,
     SharedModule,
+    CoreModule,
     MomentModule.forRoot({
       relativeTimeThresholdOptions: {
         'm': 59

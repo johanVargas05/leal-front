@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '@environment';
+import { SharingService } from '@core/services/sharing.service';
+import { Observable } from 'rxjs';
+import { User } from '@shared/interfaces/user.interfaces';
+import { AuthService } from '@views/auth/services/auth.service';
 
 @Component({
   selector: 'app-nav-profile',
@@ -7,14 +10,16 @@ import { environment } from '@environment';
   styleUrls: ['./nav-profile.component.scss']
 })
 export class NavProfileComponent implements OnInit {
-  infoUser={
-    name:'',
-    email: '',
-    imgProfile:'assets/images/profiles/perfil.png'
+  data$:Observable<User>;
+  constructor(sharingService:SharingService, private _authService:AuthService ) {
+    this.data$ = sharingService.sharingDataUser;
   }
-  constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  async signOut() {
+    await this._authService.signOut();
   }
 }

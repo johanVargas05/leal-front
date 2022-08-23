@@ -2,7 +2,6 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '@environment';
-import  LST  from '@shared/utils/local-storage';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +13,7 @@ export class InterceptorHttpService implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const token = LST.get<{token:string}>(environment.tokenKey,{token:''});
+    const token = localStorage.getItem(environment.tokenKey);
 
     let request = req;
 
